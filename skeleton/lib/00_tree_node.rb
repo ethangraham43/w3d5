@@ -32,8 +32,6 @@ class PolyTreeNode
         end
     end
 
-
-
     # def parent
     #     @parent
     # end
@@ -42,5 +40,29 @@ class PolyTreeNode
     #     @children
     # end
 
+    def dfs(value)
+        # return node if self == nil
+        return self if self.value == value
+        self.children.each do |child|
+            result = child.dfs(value) 
+            if result != nil
+                return result
+            end
+        end
+        return nil
+    end
 
+    def bfs(value)
+        queue = [self]
+        until queue.empty?
+            cur_node = queue.shift
+            if cur_node.value == value
+                return cur_node
+            else
+                queue.concat(cur_node.children)
+            end
+        end
+        return nil
+    end
 end
+
