@@ -48,4 +48,8 @@ class KnightPathFinder
         end
         @root_node
     end
+
+    def find_path(end_pos)
+        @root_node.bfs(end_pos)
+    end
 end
