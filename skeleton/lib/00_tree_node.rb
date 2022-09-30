@@ -49,7 +49,7 @@ class PolyTreeNode
                 return result
             end
         end
-        return nil
+        nil
     end
 
     def bfs(value)
@@ -62,7 +62,18 @@ class PolyTreeNode
                 queue.concat(cur_node.children)
             end
         end
-        return nil
+        nil
+    end
+
+    def display
+        result = []
+        queue = [self]
+        until queue.empty?
+            cur_node = queue.shift
+            result << cur_node.value
+            queue.concat(cur_node.children)
+        end
+        result
     end
 end
 
